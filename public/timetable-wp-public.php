@@ -4,5 +4,5 @@
  * WordPress front-end. These usually consists of getting information from the backend
  * or firing off a request to a Class or vendor package.
  *
- * @since 1.0.0
+ * @since 0.0.1
  */

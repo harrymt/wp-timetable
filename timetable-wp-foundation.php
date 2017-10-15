@@ -28,10 +28,10 @@ if ( !function_exists( 'timetable_wp_plugin_add_caps' ) ) {
     function timetable_wp_plugin_add_caps() {
 
         $role = get_role('administrator');
-        $role->add_cap('timetable_wp_plugins');
+        $role->add_cap('timetable_wp_plugin');
 
         $role = get_role('editor');
-        $role->add_cap('timetable_wp_plugins');
+        $role->add_cap('timetable_wp_plugin');
 
     }
 
@@ -55,17 +55,17 @@ if ( !function_exists( 'timetable_wp_plugin_add_caps' ) ) {
  *
  * @since 1.0.0
  */
-if ( empty( $GLOBALS['admin_page_hooks']['timetable-wp-plugins'] ) ) {
+if ( empty( $GLOBALS['admin_page_hooks']['timetable-wp-plugin'] ) ) {
     if ( !function_exists( 'timetable_wp_plugin_options_page' ) ) {
         function timetable_wp_plugin_options_page() {
             add_menu_page(
-                'Timetable Plugins',     // $page_title
-                'Timetable Plugins',     // $menu_title
-                'timetable_wp_plugins',  // $capability
-                'timetable-wp-plugins',  // $menu_slug
-                'timetable_wp_splash',   // $callback
-                'dashicons-timetable',   // $icon
-                '10'                // $position
+                'Timetable Plugin',     // $page_title
+                'Timetable',            // $menu_title
+                'timetable_wp_plugin',  // $capability
+                'timetable-wp-plugin',  // $menu_slug
+                'timetable_wp_splash',  // $callback
+                'dashicons-timetable',  // $icon
+                '10'                    // $position
             );
         }
 
@@ -80,7 +80,7 @@ if ( empty( $GLOBALS['admin_page_hooks']['timetable-wp-plugins'] ) ) {
  * @since 1.0.0
  */
 function timetable_wp_splash() {
-    //
+    require_once( plugin_dir_path( __FILE__ ) . 'admin/' . 'timetable-wp-splash.php' );
 }
 
 
