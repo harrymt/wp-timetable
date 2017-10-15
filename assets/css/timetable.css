@@ -1,0 +1,109 @@
+/**
+ * CSS for the Timetable Widget
+ */
+
+.timetable-table {
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 115%;
+  width: auto;
+  border: 2px white solid;
+  padding: 100px;
+  max-width: 800px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.timetable-table th {
+  border: 4px #eee solid;
+  background-color: rgb(112, 196, 105);
+  font-weight: normal;
+  color: white;
+  padding: 20px 20px;
+  text-align: center;
+}
+
+.timetable-table td {
+  border: 4px #eee solid;
+  background-color: #FBFBFB;
+  padding: 10px 20px;
+  color: rgb(111, 111, 111);
+}
+
+.timetable-table tr > td:first-child {
+  font-weight: bold !important;
+}
+
+.timetable-table .tt-red {
+  background-color: #E85C5C !important;
+  color: white !important;
+}
+
+.timetable-table .tt-green {
+  background-color: #54C591 !important;
+  color: white !important;
+}
+
+.timetable-table .tt-pink {
+  background-color: #E76AC7 !important;
+  color: white !important;
+}
+
+.timetable-table .tt-blue {
+  background-color: #6AC6E7 !important;
+  color: white !important;
+}
+
+.timetable-table .tt-orange {
+  background-color: #F9B05E !important;
+  color: white !important;
+}
+
+.timetable-table .tt-brown {
+  background-color: #C5B19A !important;
+  color: white !important;
+}
+
+.timetable-table .tt-purple {
+  background-color: #C0AED2 !important;
+  color: white !important;
+}
+
+.timetable-table .tt-yellow {
+  background-color: #FBEC5F !important;
+  color: white !important;
+}
+
+.timetable-table .tt-darkgrey {
+  background-color: #485566 !important;
+  color: white !important;
+}
+
+.timetable-table .tt-lightbrown {
+  background-color: #BC985D !important;
+  color: white !important;
+}
+
+.timetable-table .tt-darkblue {
+  background-color: #012345 !important;
+  color: white !important;
+}
+
+@media (max-width: 1080px) {
+  .timetable-table {
+    font-size: 80%;
+    border: 1px white solid;
+    padding: 0;
+  }
+
+ .timetable-table th {
+    border: 1px #eee solid;
+    padding: 1px 1px;
+  }
+
+ .timetable-table td {
+    border: 1px #eee solid;
+    padding: 1px 1px;
+  }
+}

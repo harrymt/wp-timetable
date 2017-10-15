@@ -53,7 +53,7 @@ require_once( 'timetable-wp-widget.php' );
  * @return string
  */
 function timetable_wp_description() {
-    return __("This is a short description about how to use this plugin", "timetable-wp");
+    return __("Change the settings to configure the timetable.", "timetable-wp");
 }
 
 /**

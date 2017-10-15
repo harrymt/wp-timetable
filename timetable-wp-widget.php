@@ -13,6 +13,27 @@ function wp_load_widgets() {
 }
 add_action( 'widgets_init', 'wp_load_widgets' );
 
+/**
+ * Include timetable stylesheet if it isn't already enqueued
+ *
+ * @since 1.0.0
+ */
+if ( !function_exists( 'timetable_wp_styles' ) ) {
+  function timetable_wp_styles() {
+    $css = plugins_url( 'assets/css/timetable.css', __FILE__ );
+    wp_register_style(
+      'timetable-wp-styles',
+      $css,
+      false,
+      '0.0.1'
+    );
+    wp_enqueue_style( 'timetable-wp-styles' );
+  }
+
+  add_action( 'wp_enqueue_scripts', 'timetable_wp_styles' );
+}
+
+
 /*
  * Timetable
  */
@@ -39,9 +60,11 @@ class wp_timetable_widget extends WP_Widget {
       $number = $instance['number'];
     }
 
+
+
     // before and after widget arguments are defined by themes
     echo $args['before_widget'];
-    echo __("The number is ($number)");
+    require_once( plugin_dir_path( __FILE__ ) . 'timetable-wp-widget.html.php' );
     echo $args['after_widget'];
   }
 
