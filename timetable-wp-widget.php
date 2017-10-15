@@ -55,12 +55,29 @@ class wp_timetable_widget extends WP_Widget {
 
   // Creating widget front-end
   public function widget( $args, $instance ) {
-    $number = 1;
-    if(!empty($instance['number'])) {
-      $number = $instance['number'];
+    // Load saved plugin data
+    $options = get_option( 'timetable_wp_settings' );
+    $headings = $options['timetable_wp_text_field_headers'];
+    $second_headings = $options['timetable_wp_text_field_headers_2'];
+    $times_data = $options['timetable_wp_textarea_field_times'];
+
+    $headings = explode(",", $headings);
+    $second_headings = explode(",", $second_headings);
+    $times_data = explode("\n", $times_data);
+    $times = array();
+    foreach ($times_data as $line) {
+      if (!empty($line)) {
+        $data = explode(",", $line);
+        $time = $data[0];
+        unset($data[0]); // Remove time, e.g. 0900
+        $times_line = [];
+        foreach ($data as $event) {
+          $d = explode(":", $event);
+          $times_line[$d[0]] = $d[1];
+        }
+        $times[$time] = $times_line;
+      }
     }
-
-
 
     // before and after widget arguments are defined by themes
     echo $args['before_widget'];
@@ -70,26 +87,10 @@ class wp_timetable_widget extends WP_Widget {
 
   // Widget Backend
   public function form( $instance ) {
-    if ( isset( $instance[ 'number' ] ) ) {
-      $number = $instance[ 'number' ];
-    } else {
-      $number = 1;
-    }
     // Widget admin form
     ?>
-      <p>
-        <label for="<?php echo $this->get_field_id( 'number' ); ?>">
-          <?php _e( 'Number of ...:' ); ?>
-        </label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" />
-      </p>
+      <p>Configure the timetable in <a href="<?= get_admin_url() ?>admin.php?page=timetable_wp_options">Timetable/Settings</a></p>
     <?php
   }
 
-  // Updating widget replacing old instances with new
-  public function update( $new_instance, $old_instance ) {
-    $instance = array();
-    $instance['number'] = ( ! empty( $new_instance['number'] ) ) ? strip_tags( $new_instance['number'] ) : '';
-    return $instance;
-  }
 } // Class wp_timetable_widget ends here
