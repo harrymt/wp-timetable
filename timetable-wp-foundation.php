@@ -92,14 +92,14 @@ function timetable_wp_splash() {
  */
 if ( !function_exists( 'timetable_wp_menu_styles' ) ) {
     function timetable_wp_menu_styles() {
-        $css = plugins_url( 'assets/css/admin.css', __FILE__ );
+        $css = plugins_url( 'assets/css/timetable.css', __FILE__ );
         wp_register_style(
-            'timetable-wp-admin-styles',
+            'timetable-wp-timetable-styles',
             $css,
             false,
             '1.0.0'
         );
-        wp_enqueue_style( 'timetable-wp-admin-styles' );
+        wp_enqueue_style( 'timetable-wp-timetable-styles' );
     }
 
     add_action( 'admin_enqueue_scripts', 'timetable_wp_menu_styles' );

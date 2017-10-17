@@ -107,3 +107,16 @@
     padding: 1px 1px;
   }
 }
+
+// Admin
+
+.dashicons-timetable {
+    background-image: url('../imgs/timetable-logo-cropped.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.toplevel_page_timetable-wp-plugins:hover .dashicons-timetable{
+    background-image: url('../imgs/timetable-logo-cropped-yellow.png');
+}
+

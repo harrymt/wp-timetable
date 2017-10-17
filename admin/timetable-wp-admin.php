@@ -57,39 +57,6 @@ function timetable_wp_options_html() {
     require_once( plugin_dir_path( __FILE__ ) . 'timetable-wp-options.php' );
 }
 
-
-// $headings = array(
-//   "Tutor",
-//   "Mr A",
-//   "Mrs B"
-// );
-
-// $second_headings = array(
-//   "Room",
-//   "Location 1",
-//   "Location 2"
-// );
-
-
-// $times = array(
-//   '0900' => array(
-//     "red" => "Chamber Orchestra",
-//     "pink" => "COSYJO"
-//   ),
-//   '0915' => array(
-//     "red" => "Chamber Orchestra",
-//     "pink" => "COSYJO"
-//   ),
-//   '0930' => array(
-//     "green" => "Intermediate Strings",
-//     "pink" => "COSYJO"
-//   ),
-//   '0945' => array(
-//     "" => "",
-//     "pink" => "COSYJO"
-//   )
-// );
-
 function timetable_wp_settings_init() {
     register_setting( 'pluginPage', 'timetable_wp_settings' );
 
