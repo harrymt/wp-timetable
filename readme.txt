@@ -37,7 +37,7 @@ Either search for 'Timetable' under Plugins on your Wordpress Blog, or manually 
 
 == Changelog ==
 
-= 0.0.1 =
-*Release Date - 19 October 2017*
+= 1.0.9 =
+*Release Date - 17 October 2017*
 
 * Initial release
