@@ -6,6 +6,31 @@
     <?php
       settings_fields( 'pluginPage' );
       do_settings_sections( 'pluginPage' );
+      $color_options = array(
+        'red',
+        'green',
+        'pink',
+        'blue',
+        'orange',
+        'brown',
+        'purple',
+        'yellow',
+        'darkgrey',
+        'lightbrown',
+        'darkblue'
+      );
+      ?>
+
+      <details>
+      <summary>Color options</summary>
+      <ul>
+        <?php foreach ($color_options as $color): ?>
+          <li><?= $color ?></li>
+        <?php endforeach; ?>
+      </ul>
+    </details>
+
+    <?php
       submit_button();
     ?>
 
