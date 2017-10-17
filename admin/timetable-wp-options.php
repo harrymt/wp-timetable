@@ -11,3 +11,6 @@
 
   </section>
 </form>
+<?php
+  the_widget( 'wp_timetable_widget' );
+?>
