@@ -9,7 +9,7 @@
  * Load the timetable widget.
  */
 function wp_load_widgets() {
-    register_widget( 'wp_timetable_widget' );
+    register_widget( 'timetable_widget' );
 }
 add_action( 'widgets_init', 'wp_load_widgets' );
 
@@ -18,48 +18,48 @@ add_action( 'widgets_init', 'wp_load_widgets' );
  *
  * @since 1.0.0
  */
-if ( !function_exists( 'wp_timetable_styles' ) ) {
-  function wp_timetable_styles() {
+if ( !function_exists( 'timetable_styles' ) ) {
+  function timetable_styles() {
     $css = plugins_url( 'assets/css/timetable.css', __FILE__ );
     wp_register_style(
-      'wp-timetable-styles',
+      'timetable-styles',
       $css,
       false,
       '0.0.1'
     );
-    wp_enqueue_style( 'wp-timetable-styles' );
+    wp_enqueue_style( 'timetable-styles' );
   }
 
-  add_action( 'wp_enqueue_scripts', 'wp_timetable_styles' );
+  add_action( 'wp_enqueue_scripts', 'timetable_styles' );
 }
 
 
 /*
  * Timetable
  */
-class wp_timetable_widget extends WP_Widget {
+class timetable_widget extends WP_Widget {
 
   function __construct() {
     parent::__construct (
 
       // Base ID of your widget
-      'wp_timetable_widget',
+      'timetable_widget',
 
       // Widget name will appear in UI
-      __('Timetable Widget', 'wp_timetable_widget_domain'),
+      __('Timetable Widget', 'timetable_widget_domain'),
 
       // Widget description
-      array( 'description' => __( 'Display a custom timetable.', 'wp_timetable_widget_domain' ), )
+      array( 'description' => __( 'Display a custom timetable.', 'timetable_widget_domain' ), )
     );
   }
 
   // Creating widget front-end
   public function widget( $args, $instance ) {
     // Load saved plugin data
-    $options = get_option( 'wp_timetable_settings' );
-    $headings = $options['wp_timetable_text_field_headers'];
-    $second_headings = $options['wp_timetable_text_field_headers_2'];
-    $times_data = $options['wp_timetable_textarea_field_times'];
+    $options = get_option( 'timetable_settings' );
+    $headings = $options['timetable_text_field_headers'];
+    $second_headings = $options['timetable_text_field_headers_2'];
+    $times_data = $options['timetable_textarea_field_times'];
 
     $headings = explode(",", $headings);
     $second_headings = explode(",", $second_headings);
@@ -81,7 +81,7 @@ class wp_timetable_widget extends WP_Widget {
 
     // before and after widget arguments are defined by themes
     echo $args['before_widget'];
-    require_once( plugin_dir_path( __FILE__ ) . 'wp-timetable-widget.html.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'timetable-widget.html.php' );
     echo $args['after_widget'];
   }
 
@@ -89,8 +89,8 @@ class wp_timetable_widget extends WP_Widget {
   public function form( $instance ) {
     // Widget admin form
     ?>
-      <p>Configure the timetable in <a href="<?= get_admin_url() ?>admin.php?page=wp_timetable_options">Timetable/Settings</a></p>
+      <p>Configure the timetable in <a href="<?= get_admin_url() ?>admin.php?page=timetable_options">Timetable/Settings</a></p>
     <?php
   }
 
-} // Class wp_timetable_widget ends here
+} // Class timetable_widget ends here

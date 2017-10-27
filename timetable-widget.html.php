@@ -1,7 +1,7 @@
 <?php
 /**
  * Markup for the Timetable widget.
- * Found in wp-timetable-widget.php.
+ * Found in timetable-widget.php.
  *
  */
 

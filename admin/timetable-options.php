@@ -1,7 +1,7 @@
 <form action='options.php' method='post'>
   <section id="introduction" class="wrap about-description">
-    <h1><?= wp_timetable_options_title(); ?></h1>
-    <p><?= wp_timetable_description(); ?></p>
+    <h1><?= timetable_options_title(); ?></h1>
+    <p><?= timetable_description(); ?></p>
 
     <?php
       settings_fields( 'pluginPage' );
@@ -37,5 +37,5 @@
   </section>
 </form>
 <?php
-  the_widget( 'wp_timetable_widget' );
+  the_widget( 'timetable_widget' );
 ?>

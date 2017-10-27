@@ -7,18 +7,18 @@
  * @link              http://github.com/harrymt
  * @author            Harry Mumford-Turner
  * @version           1.0.0
- * @package           wp-timetable
+ * @package           timetable
  *
  * @wordpress-plugin
  * Plugin Name:       Timetable Plugin
- * Plugin URI:        https://github.com/harrymt/wp-timetable
+ * Plugin URI:        https://github.com/harrymt/timetable
  * Description:       Create and control a timetable.
  * Version:           0.0.1
  * Author:            Harry Mumford-Turner
  * Author URI:        https://www.harrymt.com
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
- * Text Domain:       wp-timetable
+ * Text Domain:       timetable
 */
 
 
@@ -35,7 +35,7 @@ if ( !defined( 'WPINC' ) ) { die; }
  *
  * @since 1.0.0
  */
-require_once( 'wp-timetable-foundation.php' );
+require_once( 'timetable-foundation.php' );
 
 
 /**
@@ -43,7 +43,7 @@ require_once( 'wp-timetable-foundation.php' );
  *
  * @since 1.0.0
  */
-require_once( 'wp-timetable-widget.php' );
+require_once( 'timetable-widget.php' );
 
 
 /**
@@ -52,8 +52,8 @@ require_once( 'wp-timetable-widget.php' );
  * @since 1.0.0
  * @return string
  */
-function wp_timetable_description() {
-    return __("Change the settings to configure the timetable.", "wp-timetable");
+function timetable_description() {
+    return __("Change the settings to configure the timetable.", "timetable");
 }
 
 /**
@@ -62,7 +62,7 @@ function wp_timetable_description() {
  * @since 1.0.0
  * @return string
  */
-function wp_timetable_options_title() {
+function timetable_options_title() {
     return __("Settings");
 }
 
@@ -75,9 +75,9 @@ function wp_timetable_options_title() {
  * @since 1.0.0
  */
 if( is_admin() ) {
-    require_once( plugin_dir_path(__FILE__) . 'admin/wp-timetable-admin.php' );
+    require_once( plugin_dir_path(__FILE__) . 'admin/timetable-admin.php' );
 } else {
-    require_once( plugin_dir_path(__FILE__) . 'public/wp-timetable-public.php' );
+    require_once( plugin_dir_path(__FILE__) . 'public/timetable-public.php' );
 }
 
 
@@ -88,11 +88,11 @@ if( is_admin() ) {
  *
  * @since 1.0.0
  */
-function wp_timetable_activation() {
+function timetable_activation() {
     // flush_rewrite_rules();
 }
 
-register_activation_hook( __FILE__, 'wp_timetable_activation' );
+register_activation_hook( __FILE__, 'timetable_activation' );
 
 
 
@@ -102,11 +102,11 @@ register_activation_hook( __FILE__, 'wp_timetable_activation' );
  *
  * @since 1.0.0
  */
-function wp_timetable_deactivation() {
+function timetable_deactivation() {
     // flush_rewrite_rules();
 }
 
-register_deactivation_hook( __FILE__, 'wp_timetable_deactivation' );
+register_deactivation_hook( __FILE__, 'timetable_deactivation' );
 
 
 
@@ -115,8 +115,8 @@ register_deactivation_hook( __FILE__, 'wp_timetable_deactivation' );
  *
  * @since 1.0.0
  */
-function wp_timetable_uninstall() {
+function timetable_uninstall() {
     //
 }
 
-register_uninstall_hook( __FILE__, 'wp_timetable_uninstall' );
+register_uninstall_hook( __FILE__, 'timetable_uninstall' );
