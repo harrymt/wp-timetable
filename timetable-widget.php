@@ -8,30 +8,28 @@
 /**
  * Load the timetable widget.
  */
-function wp_load_widgets() {
+function timetable_setup_widgets() {
     register_widget( 'timetable_widget' );
 }
-add_action( 'widgets_init', 'wp_load_widgets' );
+add_action( 'widgets_init', 'timetable_setup_widgets' );
 
 /**
- * Include timetable stylesheet if it isn't already enqueued
+ * Include timetable stylesheet
  *
  * @since 1.0.0
- */
-if ( !function_exists( 'timetable_styles' ) ) {
-  function timetable_styles() {
-    $css = plugins_url( 'assets/css/timetable.css', __FILE__ );
-    wp_register_style(
-      'timetable-styles',
-      $css,
-      false,
-      '0.0.1'
-    );
-    wp_enqueue_style( 'timetable-styles' );
-  }
-
-  add_action( 'wp_enqueue_scripts', 'timetable_styles' );
+*/
+function timetable_styles() {
+  $css = plugins_url( 'assets/css/timetable.css', __FILE__ );
+  wp_register_style(
+    'timetable-styles',
+    $css,
+    false,
+    '0.0.1'
+  );
+  wp_enqueue_style( 'timetable-styles' );
 }
+
+add_action( 'wp_enqueue_scripts', 'timetable_styles' );
 
 
 /*
