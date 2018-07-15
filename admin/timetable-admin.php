@@ -119,8 +119,9 @@ function timetable_text_field_headers_2_render() {
 function timetable_textarea_field_times_render() {
 
     $options = get_option( 'timetable_settings' );
+    $value = $options['timetable_textarea_field_times'];
     ?>
-    <textarea cols='80' rows='10' name='timetable_settings[timetable_textarea_field_times]'><?= $options['timetable_textarea_field_times']; ?></textarea>
+    <textarea cols='100' rows='20' name='timetable_settings[timetable_textarea_field_times]'><?= $value; ?></textarea>
     <?php
 
 }
