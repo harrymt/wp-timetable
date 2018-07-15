@@ -71,7 +71,7 @@ function timetable_settings_init() {
     // Header 1
     add_settings_field(
         'timetable_text_field_headers',
-        __( 'Heading Labels comma separated', 'timetable_widget_domain' ),
+        __( 'Heading 1 Labels (comma separated)', 'timetable_widget_domain' ),
         'timetable_text_field_headers_render',
         'pluginPage',
         'timetable_pluginPage_section'
@@ -80,7 +80,7 @@ function timetable_settings_init() {
     // Header 2
     add_settings_field(
         'timetable_text_field_headers_2',
-        __( 'Heading Labels comma separated', 'timetable_widget_domain' ),
+        __( 'Heading 2 Labels (comma separated)', 'timetable_widget_domain' ),
         'timetable_text_field_headers_2_render',
         'pluginPage',
         'timetable_pluginPage_section'
@@ -89,7 +89,7 @@ function timetable_settings_init() {
     // Times
     add_settings_field(
         'timetable_textarea_field_times',
-        __( 'Each event separated by new line, e.g. <pre>Time,Color:Name,Color:Name,Color:Name</pre>', 'timetable_widget_domain' ),
+        __( 'Timetable (each event separated by new line, e.g. <pre>Time,Color:Name,Color:Name,Color:Name</pre>)', 'timetable_widget_domain' ),
         'timetable_textarea_field_times_render',
         'pluginPage',
         'timetable_pluginPage_section'
