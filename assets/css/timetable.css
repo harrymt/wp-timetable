@@ -35,57 +35,57 @@
   font-weight: bold !important;
 }
 
-.timetable-table .tt-red {
+.tt-red {
   background-color: #E85C5C !important;
   color: white !important;
 }
 
-.timetable-table .tt-green {
+.tt-green {
   background-color: #54C591 !important;
   color: white !important;
 }
 
-.timetable-table .tt-pink {
+.tt-pink {
   background-color: #E76AC7 !important;
   color: white !important;
 }
 
-.timetable-table .tt-blue {
+.tt-blue {
   background-color: #6AC6E7 !important;
   color: white !important;
 }
 
-.timetable-table .tt-orange {
+.tt-orange {
   background-color: #F9B05E !important;
   color: white !important;
 }
 
-.timetable-table .tt-brown {
+.tt-brown {
   background-color: #C5B19A !important;
   color: white !important;
 }
 
-.timetable-table .tt-purple {
+.tt-purple {
   background-color: #C0AED2 !important;
   color: white !important;
 }
 
-.timetable-table .tt-yellow {
+.tt-yellow {
   background-color: #FBEC5F !important;
   color: white !important;
 }
 
-.timetable-table .tt-darkgrey {
+.tt-darkgrey {
   background-color: #485566 !important;
   color: white !important;
 }
 
-.timetable-table .tt-lightbrown {
+.tt-lightbrown {
   background-color: #BC985D !important;
   color: white !important;
 }
 
-.timetable-table .tt-darkblue {
+.tt-darkblue {
   background-color: #012345 !important;
   color: white !important;
 }
@@ -108,7 +108,9 @@
   }
 }
 
-// Admin
+.timetable-summary:hover {
+    cursor: pointer;
+}
 
 .dashicons-timetable {
     background-image: url('../imgs/timetable-logo-cropped.png');

@@ -22,10 +22,15 @@
       ?>
 
       <details>
-      <summary>Color options</summary>
+      <summary class="timetable-summary">Color options</summary>
       <ul>
         <?php foreach ($color_options as $color): ?>
-          <li><?= $color ?></li>
+          <li style="display:flex;width:100px;justify-content: space-between;">
+            <span><?= $color ?></span>
+            <span>
+              <span class="tt-<?= $color ?>" style="border-radius: 2px;padding-right: 20px;padding-left: 10px;"></span>
+            </span>
+          </li>
         <?php endforeach; ?>
       </ul>
     </details>
