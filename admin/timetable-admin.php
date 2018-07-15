@@ -89,7 +89,7 @@ function timetable_settings_init() {
     // Times
     add_settings_field(
         'timetable_textarea_field_times',
-        __( 'Timetable (each event separated by new line, e.g. <pre>Time,Color:Name,Color:Name,Color:Name</pre>)', 'timetable_widget_domain' ),
+        __( 'Timetable, each event separated by new line, e.g. <pre>Time,Color:Name,Color:Name,Color:Name</pre>', 'timetable_widget_domain' ),
         'timetable_textarea_field_times_render',
         'pluginPage',
         'timetable_pluginPage_section'
