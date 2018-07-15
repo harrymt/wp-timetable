@@ -102,7 +102,7 @@ function timetable_text_field_headers_render() {
     $options = get_option( 'timetable_settings' );
     $value = $options['timetable_text_field_headers'];
     ?>
-    <input type='text' name='timetable_settings[timetable_text_field_headers]' value='<?= $value ?>'>
+    <textarea cols='100' rows='2' type='text' name='timetable_settings[timetable_text_field_headers]'><?= $value ?></textarea>
     <?php
 }
 
@@ -111,7 +111,7 @@ function timetable_text_field_headers_2_render() {
     $options = get_option( 'timetable_settings' );
     $value = $options['timetable_text_field_headers_2'];
     ?>
-    <input type='text' name='timetable_settings[timetable_text_field_headers_2]' value='<?= $value ?>'>
+    <textarea cols='100' rows='2' type='text' name='timetable_settings[timetable_text_field_headers_2]'><?= $value ?></textarea>
     <?php
 }
 
