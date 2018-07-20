@@ -70,9 +70,9 @@ function timetable_settings_init() {
 
     // Header 1
     add_settings_field(
-        'timetable_text_field_headers',
+        'timetable_text_field_headers_1',
         __( 'Heading 1 Labels (comma separated)', 'timetable_widget_domain' ),
-        'timetable_text_field_headers_render',
+        'timetable_text_field_headers_1_render',
         'pluginPage',
         'timetable_pluginPage_section'
     );
@@ -98,11 +98,11 @@ function timetable_settings_init() {
 add_action( 'admin_init', 'timetable_settings_init' );
 
 
-function timetable_text_field_headers_render() {
+function timetable_text_field_headers_1_render() {
     $options = get_option( 'timetable_settings' );
-    $value = $options['timetable_text_field_headers'];
+    $value = $options['timetable_text_field_headers_1'];
     ?>
-    <textarea cols='100' rows='2' type='text' name='timetable_settings[timetable_text_field_headers]'><?= $value ?></textarea>
+    <textarea cols='100' rows='2' type='text' name='timetable_settings[timetable_text_field_headers_1]'><?= $value ?></textarea>
     <?php
 }
 

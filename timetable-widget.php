@@ -55,7 +55,7 @@ class timetable_widget extends WP_Widget {
   public function widget( $args, $instance ) {
     // Load saved plugin data
     $options = get_option( 'timetable_settings' );
-    $headings = $options['timetable_text_field_headers'];
+    $headings = $options['timetable_text_field_headers_1'];
     $second_headings = $options['timetable_text_field_headers_2'];
     $times_data = $options['timetable_textarea_field_times'];
 
