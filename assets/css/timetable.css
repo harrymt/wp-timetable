@@ -90,6 +90,29 @@
   color: white !important;
 }
 
+button.button-admin {
+    border-radius: 2px;
+    border: 0;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    height: 25px;
+    text-align: center;
+    width: 25px;
+}
+
+button.button-admin-new {
+    background-color: lightseagreen;
+    position: relative;
+}
+
+button.button-admin-close {
+    background-color: red;
+    left: -20px;
+    position: relative;
+    top: -12px;
+}
+
 @media (max-width: 1080px) {
   .timetable-table {
     font-size: 80%;

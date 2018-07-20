@@ -3,7 +3,7 @@
  * Timetable WordPress Plugin Foundation
  * - Sets the defaults permissions for Admin & Editor
  * - Adds a Page into WordPress Admin sidebar
- * - Enqueues Timetable plugin stylesheet (sidebar icon)
+ * - Enqueues Timetable plugin stylesheet/scripts (sidebar icon)
  *
  * @author      Harry Mumford-Turner
  * @version     0.0.1
@@ -59,9 +59,9 @@ if ( empty( $GLOBALS['admin_page_hooks']['timetable-plugin'] ) ) {
             add_menu_page(
                 'Timetable Plugin',     // $page_title
                 'Timetable',            // $menu_title
-                'timetable_plugin',  // $capability
-                'timetable-plugin',  // $menu_slug
-                'timetable_splash',  // $callback
+                'timetable_plugin',     // $capability
+                'timetable-plugin',     // $menu_slug
+                'timetable_splash',     // $callback
                 'dashicons-timetable',  // $icon
                 '10'                    // $position
             );
@@ -100,3 +100,16 @@ function timetable_menu_styles() {
 }
 
 add_action( 'admin_enqueue_scripts', 'timetable_menu_styles' );
+
+
+/**
+ * Include admin javascripts
+ *
+ * @since 1.0.0
+ */
+function timetable_menu_scripts() {
+    $js = plugins_url( 'assets/js/timetable.js', __FILE__ );
+    wp_enqueue_script( "timetable-admin-scripts", $js, [], null, false );
+}
+
+add_action( 'admin_enqueue_scripts', 'timetable_menu_scripts' );
