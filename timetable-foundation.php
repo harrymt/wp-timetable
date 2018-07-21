@@ -40,7 +40,7 @@ add_action('admin_init', 'timetable_plugin_add_caps');
 
 /**
  * Check to make sure that another plugin has not already registered the plugin
- * splash page. If it does not exist, add a top level Page into the WordPress admin
+ * options page. If it does not exist, add a top level Page into the WordPress admin
  * sidebar
  *
  * @var $page_title  string  This is the heading for the page.
@@ -61,7 +61,7 @@ if ( empty( $GLOBALS['admin_page_hooks']['timetable-plugin'] ) ) {
                 'Timetable',            // $menu_title
                 'timetable_plugin',     // $capability
                 'timetable-plugin',     // $menu_slug
-                'timetable_splash',     // $callback
+                'timetable_options',     // $callback
                 'dashicons-timetable',  // $icon
                 '10'                    // $position
             );
@@ -77,8 +77,8 @@ if ( empty( $GLOBALS['admin_page_hooks']['timetable-plugin'] ) ) {
  *
  * @since 1.0.0
  */
-function timetable_splash() {
-    require_once( plugin_dir_path( __FILE__ ) . 'admin/' . 'timetable-splash.php' );
+function timetable_options() {
+    require_once( plugin_dir_path( __FILE__ ) . 'admin/' . 'timetable-options.php' );
 }
 
 

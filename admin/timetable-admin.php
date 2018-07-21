@@ -15,7 +15,6 @@
  * @since 1.0.0
  */
 function timetable_add_caps() {
-
     $role = get_role('administrator');
     $role->add_cap('timetable_config');
 
@@ -24,28 +23,6 @@ function timetable_add_caps() {
 }
 
 add_action( 'admin_init', 'timetable_add_caps' );
-
-
-
-/**
- * Add a sub menu page underneath the existing Timetable Plugins Page
- *
- * @since 1.0.0
- */
-function timetable_options_page() {
-
-    add_submenu_page(
-        'timetable-plugin',        // $parent_slug
-        'Timetable Plugin',           // $page_title
-        timetable_options_title(), // $menu_title
-        'timetable_config',        // $capability
-        'timetable_options',       // $menu_slug
-        'timetable_options_html'        // $callback
-    );
-
-}
-
-add_action( 'admin_menu', 'timetable_options_page' );
 
 
 /**
@@ -127,11 +104,8 @@ function timetable_textarea_field_times_render() {
 }
 
 
-
 function timetable_settings_section_callback() {
     echo __( 'Enter your timetable details here.', 'timetable_widget_domain' );
 }
 
-
 ?>
-
