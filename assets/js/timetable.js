@@ -1,9 +1,10 @@
 
-var heading1box, heading2box;
+var heading1box, heading2box, eventbox;
 (function($) {
     $(document).ready(function() {
         heading1box = $('textarea[name="timetable_settings[timetable_text_field_headers_1]"]');
         heading2box = $('textarea[name="timetable_settings[timetable_text_field_headers_2]"]');
+        eventbox = $('textarea[name="timetable_settings[timetable_textarea_field_times]"]');
 
         const closeButton = "<button class='button-admin button-admin-close'>X</button>";
         const newButton = "<button class='button-admin button-admin-new'>+</button>";
@@ -13,9 +14,9 @@ var heading1box, heading2box;
             return "js-" + heading + "-heading-box";
         }
 
-        function wrapper_selector(heading)
+        function wrapper_selector(type)
         {
-            return "js-" + heading + "-heading-box-wrapper";
+            return "js-" + type + "-box-wrapper";
         }
         
         function hide_php_box(box)
@@ -39,12 +40,22 @@ var heading1box, heading2box;
                 updateBoxWithCellContents(phpBox, heading_number);
             });
 
-            $(box).keyup(function(e) {
+            $(box).keyup(function() {
                 updateBoxWithCellContents(phpBox, heading_number);
             });
 
             var wrapper = $("<span class='cell-box-wrapper'></span>").append(box);
             wrapper.append(close);
+            return wrapper;
+        }
+
+        function create_wrapper_with_class(firstElement, secondElement, type)
+        {
+            var wrapper = $("<div class='" + wrapper_selector(type) + "'></div>");
+            wrapper.append(firstElement);
+            if (secondElement !== null) {
+                wrapper.append(secondElement);
+            }
             return wrapper;
         }
 
@@ -68,10 +79,7 @@ var heading1box, heading2box;
                 $(e.currentTarget).before(newBox);
             });
 
-            var wrapper = $("<div class='" + wrapper_selector(number) + "'></div>");
-            phpBox.after(wrapper);
-            wrapper.append(headingsNewBoxes);
-            wrapper.append(newBtn);
+            phpBox.after(create_wrapper_with_class(headingsNewBoxes, newBtn, number + "-heading"));            
         }
 
         /**
@@ -88,12 +96,57 @@ var heading1box, heading2box;
             $(box).text(contents.join(","));
         }
 
+
+        /**
+         * Creates boxes for the timetable events.
+         */
+        function add_event_boxes()
+        {
+            if (eventbox.length === 0) { return; }
+            var eventwrapper = $("<div class='js-event-wrapper'></div>");
+            eventbox.after(eventwrapper);
+
+            var contents = eventbox[0].value.split("\n");
+            var gridboxes = contents.map(function(row) {
+                var therow = row.split(",").map(function(celltext) {
+                    var cell = $("<input class='js-event-cell' value='" + celltext + "'/>");
+                    $(cell).keyup(function() {
+                        update_event_box();
+                    });
+                    return cell;
+                });
+                let rowwrap = $("<div class='js-event-row'></div>");
+                rowwrap.append(therow);
+                return rowwrap;
+            });
+
+            gridboxes.forEach(cell => {
+                eventwrapper.append(cell);
+            });
+        }
+
+        function update_event_box()
+        {
+            var contents = [];
+            $(".js-event-wrapper .js-event-row").each(function() {
+                var contentsrow = [];
+                $(this).find(".js-event-cell").each(function(i, val) {
+                    var cell = $(val)[0].value;
+                    contentsrow.push(cell);
+                })
+                contents.push(contentsrow.join(","));
+            });
+            $(eventbox).text(contents.join("\n"));
+        }
+
         function main()
         {
             hide_php_box(heading1box);
             hide_php_box(heading2box);
+            hide_php_box(eventbox);
             add_header_editing_buttons(heading1box, "1");
             add_header_editing_buttons(heading2box, "2");
+            add_event_boxes();
         }
 
         main();
