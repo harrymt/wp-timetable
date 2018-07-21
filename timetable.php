@@ -63,7 +63,7 @@ function timetable_description() {
  * @return string
  */
 function timetable_options_title() {
-    return __("Settings");
+    return __("Timetable Settings");
 }
 
 
