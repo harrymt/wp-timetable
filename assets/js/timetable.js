@@ -19,9 +19,9 @@ var heading1box, heading2box, eventbox;
             return "js-" + type + "-box-wrapper";
         }
         
-        function hide_php_box(box)
+        function toggle_php_box(box)
         {
-            box.css("display", "none");
+            box.toggle();
         }
 
         /**
@@ -30,18 +30,18 @@ var heading1box, heading2box, eventbox;
          */
         function create_cell_box(phpBox, heading_number, box_text)
         {
-            var box = $("<input class='" + box_selector(heading_number) + "' value='" + box_text + "'/>");
+            var box = $("<input class='" + box_selector(heading_number) + " js-header-box' value='" + box_text + "'/>");
             var close = $(closeButton);
 
             $(close).on("click", function(e) {
                 e.preventDefault();
                 $(close).remove();
                 $(box).remove();
-                updateBoxWithCellContents(phpBox, heading_number);
+                update_header_box(phpBox, heading_number);
             });
 
             $(box).keyup(function() {
-                updateBoxWithCellContents(phpBox, heading_number);
+                update_header_box(phpBox, heading_number);
             });
 
             var wrapper = $("<span class='cell-box-wrapper'></span>").append(box);
@@ -86,13 +86,16 @@ var heading1box, heading2box, eventbox;
          * Update the given `box` from the boxes cell contents
          * based on `number`.
          */
-        function updateBoxWithCellContents(box, number)
+        function update_header_box(box, number)
         {
+            console.log("Updating header box")
             var contents = [];
             $('.' + box_selector(number)).each(function() {
+                console.log("Updating header box 2")
                 var cell = $(this)[0].value;
                 contents.push(cell);
             });
+            console.log(contents.join(","))
             $(box).text(contents.join(","));
         }
 
@@ -109,7 +112,7 @@ var heading1box, heading2box, eventbox;
             var contents = eventbox[0].value.split("\n");
             var gridboxes = contents.map(function(row) {
                 var therow = row.split(",").map(function(celltext) {
-                    var cell = $("<input class='js-event-cell' value='" + celltext + "'/>");
+                    var cell = $("<input class='js-event-cell js-editable-cell' value='" + celltext + "'/>");
                     $(cell).keyup(function() {
                         update_event_box();
                     });
@@ -139,11 +142,26 @@ var heading1box, heading2box, eventbox;
             $(eventbox).text(contents.join("\n"));
         }
 
+        function setup_csv_data_toggle(boxes)
+        {
+            $(".js-show-csv-data").on("click", function(e) {
+                e.preventDefault();
+                boxes.forEach(function(box) {
+                    toggle_php_box(box);
+                });
+            });
+        }
+
         function main()
         {
-            hide_php_box(heading1box);
-            hide_php_box(heading2box);
-            hide_php_box(eventbox);
+            toggle_php_box(heading1box);
+            toggle_php_box(heading2box);
+            toggle_php_box(eventbox);
+            setup_csv_data_toggle([
+                heading1box,
+                heading2box,
+                eventbox
+            ]);
             add_header_editing_buttons(heading1box, "1");
             add_header_editing_buttons(heading2box, "2");
             add_event_boxes();

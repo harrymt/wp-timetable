@@ -105,7 +105,10 @@ function timetable_textarea_field_times_render() {
 
 
 function timetable_settings_section_callback() {
-    echo __( 'Enter your timetable details here.', 'timetable_widget_domain' );
+    ?>
+    <p>Enter your timetable details here.</p>
+    <a class="js-show-csv-data" href="">(show code behind)</a>
+    <?php
 }
 
 ?>

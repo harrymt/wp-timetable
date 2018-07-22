@@ -108,9 +108,19 @@ button.button-admin-new {
 
 button.button-admin-close {
     background-color: red;
-    left: -20px;
+    left: -10px;
     position: relative;
-    top: -12px;
+    top: -15px;
+}
+
+.js-editable-cell {
+    margin-right: 20px;
+    width: 130px;
+}
+
+.js-header-box {
+    width: 130px;
+    margin-right: -5px;
 }
 
 @media (max-width: 1080px) {
