@@ -22,10 +22,10 @@
   <?php foreach ($times as $the_time => $the_session):?>
   <tr>
     <td><?= $the_time ?></td>
-    <?php foreach ($the_session as $color => $name):?>
-      <td <?= $color == "" ? '' : 'class="tt-' . $color . '"'?>>
-        <?= $name ?>
-      </td>
+    <?php foreach($the_session as $event):?>
+        <td <?= $event["colour"] == "" ? "" : 'class="tt-' . $event["colour"] . '"'?>>
+            <?= $event["text"] ?>
+        </td>
     <?php endforeach; ?>
   </tr>
   <?php endforeach; ?>

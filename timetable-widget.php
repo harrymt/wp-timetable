@@ -57,24 +57,26 @@ class timetable_widget extends WP_Widget {
     $options = get_option( 'timetable_settings' );
     $headings = $options['timetable_text_field_headers_1'];
     $second_headings = $options['timetable_text_field_headers_2'];
-    $times_data = $options['timetable_textarea_field_times'];
+    $events = $options['timetable_textarea_field_times'];
 
     $headings = explode(",", $headings);
     $second_headings = explode(",", $second_headings);
-    $times_data = explode("\n", $times_data);
+    $events = explode("\n", $events);
     $times = array();
-    foreach ($times_data as $line) {
-      if (!empty($line)) {
-        $data = explode(",", $line);
-        $time = $data[0];
-        unset($data[0]); // Remove time, e.g. 0900
-        $times_line = [];
-        foreach ($data as $event) {
-          $d = explode(":", $event);
-          $times_line[$d[0]] = $d[1];
+
+    foreach($events as $event_row) {
+        $row = explode(",", $event_row);
+        $time = array_shift($row); // Remove the time
+        $event_row_enriched = [];
+        for($e = 0; $e < count($row); $e++) {
+            $event = explode(":", $row[$e]);
+
+            $event_row_enriched[$e] = Array(
+                "colour" => $event[0],
+                "text" => $event[1]
+            );
         }
-        $times[$time] = $times_line;
-      }
+        $times[$time] = $event_row_enriched;
     }
 
     // before and after widget arguments are defined by themes
