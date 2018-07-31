@@ -152,6 +152,31 @@ var heading1box, heading2box, eventbox;
             });
         }
 
+        function toggle_visibility(element) {
+            if ($(element).css("visibility") == "hidden") {
+                $(element).css("visibility", "visible");
+            } else {
+                $(element).css("visibility", "hidden");
+            }
+        }
+
+        function add_enable_editing_button() {
+            // Initiall hide all editing boxes
+            toggle_visibility($(".button-admin-close"));
+            toggle_visibility($(".button-admin-new"));
+            
+            var enableEditing = $("<input id='enableediting' type='checkbox' class='js-enable-editing' />");
+            $(enableEditing).on("click", function(e) {
+                toggle_visibility($(".button-admin-close"));
+                toggle_visibility($(".button-admin-new"));
+            });
+            var toggleEditing = $("<label for='enableediting'>Enable Editing</label>");
+            toggleEditing.append(enableEditing);
+            var wrapper = $("<div></div>");
+            wrapper.append(toggleEditing);
+            $(".js-show-csv-data").after(wrapper);
+        }
+
         function main()
         {
             toggle_php_box(heading1box);
@@ -165,6 +190,7 @@ var heading1box, heading2box, eventbox;
             add_header_editing_buttons(heading1box, "1");
             add_header_editing_buttons(heading2box, "2");
             add_event_boxes();
+            add_enable_editing_button();
         }
 
         main();
