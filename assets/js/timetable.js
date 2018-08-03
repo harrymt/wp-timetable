@@ -145,7 +145,6 @@ var heading1box, heading2box, eventbox;
         function setup_csv_data_toggle(boxes)
         {
             $(".js-show-csv-data").on("click", function(e) {
-                e.preventDefault();
                 boxes.forEach(function(box) {
                     toggle_php_box(box);
                 });
@@ -165,16 +164,10 @@ var heading1box, heading2box, eventbox;
             toggle_visibility($(".button-admin-close"));
             toggle_visibility($(".button-admin-new"));
             
-            var enableEditing = $("<input id='enableediting' type='checkbox' class='js-enable-editing' />");
-            $(enableEditing).on("click", function(e) {
+            $(".js-enable-editing").on("click", function(e) {
                 toggle_visibility($(".button-admin-close"));
                 toggle_visibility($(".button-admin-new"));
             });
-            var toggleEditing = $("<label for='enableediting'>Enable Editing</label>");
-            toggleEditing.append(enableEditing);
-            var wrapper = $("<div></div>");
-            wrapper.append(toggleEditing);
-            $(".js-show-csv-data").after(wrapper);
         }
 
         function main()

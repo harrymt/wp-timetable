@@ -41,7 +41,7 @@ function timetable_settings_init() {
     add_settings_section(
         'timetable_pluginPage_section',
         __( 'Configure Timetable', 'timetable_widget_domain' ),
-        'timetable_settings_section_callback',
+        'timetable_description_header_callback',
         'pluginPage'
     );
 
@@ -68,6 +68,15 @@ function timetable_settings_init() {
         'timetable_textarea_field_times',
         __( 'Timetable, each event separated by new line, e.g. <pre>Time,Color:Name,Color:Name,Color:Name</pre>', 'timetable_widget_domain' ),
         'timetable_textarea_field_times_render',
+        'pluginPage',
+        'timetable_pluginPage_section'
+    );
+
+    // Settings checkboxes
+    add_settings_field(
+        'timetable_text_field_settings_section',
+        __( 'Advanced Settings', 'timetable_widget_domain' ),
+        'timetable_text_field_show_settings_options',
         'pluginPage',
         'timetable_pluginPage_section'
     );
@@ -103,11 +112,24 @@ function timetable_textarea_field_times_render() {
 
 }
 
-
-function timetable_settings_section_callback() {
+function timetable_text_field_show_settings_options() {
     ?>
-    <p>Enter your timetable details here.</p>
-    <a class="js-show-csv-data" href="">(show code behind)</a>
+    <div>
+        <input id='enable-editing' type='checkbox' class='js-enable-editing' />
+        <label for='enable-editing'>Enable experimental deletion</label>
+    </div>
+
+    <div>
+        <input id='toggle-code-behind' type='checkbox' class='js-show-csv-data' />
+        <label for='toggle-code-behind'>Show code behind</label>
+    </div>
+
+    <?php
+}
+
+function timetable_description_header_callback() {
+    ?>
+    <p>Change event times and headers on this page.</p>
     <?php
 }
 
